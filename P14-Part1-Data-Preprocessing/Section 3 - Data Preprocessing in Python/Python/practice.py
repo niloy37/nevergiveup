@@ -11,7 +11,7 @@ import numpy as np
 
 dataset = pd.read_csv('C:/Data.csv')
 X = dataset.iloc[:, :-1].values
-Y = dataset.iloc[:, 3].values
+y = dataset.iloc[:, 3].values
 
 
 from sklearn.impute import SimpleImputer
@@ -31,5 +31,9 @@ ct = ColumnTransformer([("Country", OneHotEncoder(), [0])], remainder = 'passthr
 X = ct.fit_transform(X)
 
 labelencoder_y  = LabelEncoder()
-Y = labelencoder_y.fit_transform(Y)
+y= labelencoder_y.fit_transform(y)
+
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2)
 
