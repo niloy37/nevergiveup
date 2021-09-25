@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # -*- coding: utf-8 -*-
 """
 Spyder Editor
@@ -17,7 +17,7 @@ import numpy as np
 
 dataset = pd.read_csv('C:/Data.csv')
 X = dataset.iloc[:, :-1].values
-=======
+
 # -*- coding: utf-8 -*-
 """
 Spyder Editor
@@ -36,5 +36,11 @@ import numpy as np
 
 dataset = pd.read_csv('C:/Data.csv')
 X = dataset.iloc[:, :-1].values
->>>>>>> 475384a (done)
 Y = dataset.iloc[:, 3].values
+
+
+from sklearn.impute import SimpleImputer
+
+imputer = SimpleImputer(missing_values = np.nan, strategy = 'mean')
+imputer = imputer.fit(X[:, 1:3])
+X[:, 1:3] = imputer.transform(X[:, 1:3])
